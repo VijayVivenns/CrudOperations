@@ -11,13 +11,11 @@
             var isEdge = userAgent.includes("Edg");
 
             if (!isEdge) {
-                // If the browser is not Microsoft Edge, show a popup asking to download Edge
+                // If the browser is not Microsoft Edge, show a popup and change the title
+                document.title = "This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.";
                 alert("This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.");
-                // Update the <title> tag
-                document.title = "This app is optimized for Microsoft Edge. Please download and install Edge for the best experience";
             } else {
-                // If Microsoft Edge is detected, redirect to the app and update the title
-                document.title = "Redirecting to Microsoft Edge";
+                // Automatically redirect to Microsoft Edge if it's being used
                 var edgeAppURL = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700";
                 window.location.href = edgeAppURL;
             }
@@ -30,3 +28,4 @@
     <h1>Redirecting to Microsoft Edge...</h1>
 </body>
 </html>
+
