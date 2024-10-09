@@ -11,16 +11,19 @@
             var isEdge = userAgent.includes("Edg");
 
             if (!isEdge) {
-                // If the browser is not Microsoft Edge, attempt to open in Edge
+                // If the browser is not Microsoft Edge
                 var edgeAppURL = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/632f5867-9749-4ab0-975a-e592c4c1f8a5";
-                
-                // Redirect to Microsoft Edge App
+
+                // Attempt to open Microsoft Edge
                 window.location.href = edgeAppURL;
 
-                // Show an alert that the user needs to install Edge
+                // Show a popup if Edge is not detected after a short delay
                 setTimeout(function() {
-                    alert("For a better experience, please install Microsoft Edge.");
-                }, 2000); // Alert after a short delay
+                    // Check if the page is still open in the current browser
+                    if (!navigator.userAgent.includes("Edg")) {
+                        alert("It seems you don't have Microsoft Edge installed. Please download and install Microsoft Edge for a better experience.");
+                    }
+                }, 2000); // Adjust timeout as needed
             } else {
                 // Redirect to Power Apps app link if Microsoft Edge is being used
                 window.location.href = "https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/632f5867-9749-4ab0-975a-e592c4c1f8a5";
