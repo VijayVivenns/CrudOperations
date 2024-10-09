@@ -15,14 +15,11 @@
                 var edgeAppURL = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/632f5867-9749-4ab0-975a-e592c4c1f8a5";
                 var edgeDownloadURL = "https://www.microsoft.com/edge";
 
-                // Attempt to open Microsoft Edge directly
+                // Attempt to open Microsoft Edge
                 window.location.href = edgeAppURL;
 
-                // Check if the user has Edge installed and show a download prompt after a short delay
-                setTimeout(function() {
-                    alert("Microsoft Edge is required for the best experience. If you don't have it installed, please download and install it from the official website.");
-                    window.location.href = edgeDownloadURL;
-                }, 2000); // Delay for attempting to open Edge
+                // Show an alert asking the user to download Edge if it isn't installed
+                alert("This app is optimized for Microsoft Edge. If you don't have it installed, please download and install it for a better experience: " + edgeDownloadURL);
             } else {
                 // Redirect to Power Apps app link if Microsoft Edge is being used
                 window.location.href = "https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/632f5867-9749-4ab0-975a-e592c4c1f8a5";
