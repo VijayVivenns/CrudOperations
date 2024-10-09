@@ -6,22 +6,26 @@
     <title>Redirect to Microsoft Edge</title>
     <script>
         function detectBrowser() {
-            // Detect the browser using the user agent string
             var userAgent = navigator.userAgent;
             var isEdge = userAgent.includes("Edg");
 
             if (!isEdge) {
-                // If the browser is not Microsoft Edge
+                // Attempt to open Microsoft Edge using a custom protocol
                 var edgeAppURL = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/632f5867-9749-4ab0-975a-e592c4c1f8a5";
                 var edgeDownloadURL = "https://www.microsoft.com/edge";
 
-                // Attempt to open Microsoft Edge
+                // Redirect to Edge app directly
                 window.location.href = edgeAppURL;
 
-                // Show an alert asking the user to download Edge if it isn't installed
-                alert("This app is optimized for Microsoft Edge. If you don't have it installed, please download and install it for a better experience: " + edgeDownloadURL);
+                // After a short delay, check if the app has opened; if not, show the download prompt
+                setTimeout(function() {
+                    if (navigator.userAgent.indexOf("Edg") === -1) {
+                        alert("You don't have Microsoft Edge installed. For a better experience, please download and install Microsoft Edge from the link below.");
+                        window.location.href = edgeDownloadURL;
+                    }
+                }, 2000); // Wait 2 seconds to check for the app installation
             } else {
-                // Redirect to Power Apps app link if Microsoft Edge is being used
+                // If already in Edge, just open the app directly
                 window.location.href = "https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/632f5867-9749-4ab0-975a-e592c4c1f8a5";
             }
         }
