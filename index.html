@@ -1,73 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power Apps Link Redirect</title>
-  <style>
-    /* Popup style */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background-color: #f8d7da;
-      border: 1px solid #f5c6cb;
-      color: #721c24;
-      border-radius: 5px;
-      z-index: 1000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Apps Redirection</title>
+    <script type="text/javascript">
+        function checkBrowser() {
+            // Check if the browser is Edge
+            var isEdge = /Edg\//i.test(navigator.userAgent);
+            
+            if (isEdge) {
+                // If Edge is installed, open the Power Apps app in Edge
+                window.location.href = "https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700?tenantId=c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2&hint=857d0959-b069-46c2-96f9-3fbf3f1d5fc6&sourcetime=1728445704492&source=portal";
+            } else {
+                // If Edge is not installed, show a popup message
+                alert("You don't have Microsoft Edge installed. Please download and install Microsoft Edge for the best experience.");
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = checkBrowser;
+    </script>
 </head>
 <body>
-
-  <!-- Popup Message -->
-  <div id="popup" class="popup">
-    <p>You don't have Microsoft Edge installed. Please download and install Microsoft Edge for a better experience.</p>
-  </div>
-
-  <script>
-    function detectBrowserAndRedirect() {
-      var userAgent = navigator.userAgent.toLowerCase();
-
-      // Check if the browser is Edge
-      if (userAgent.indexOf('edge') > -1) {
-        // If Edge is detected, open the app in the Edge browser
-        window.location.href = "https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700?tenantId=c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2&hint=857d0959-b069-46c2-96f9-3fbf3f1d5fc6&sourcetime=1728445704492&source=portal";
-      } else {
-        // Check if Microsoft Edge is installed
-        var edgeInstalled = checkEdgeInstalled();
-
-        if (edgeInstalled) {
-          // Redirect to Edge if it's installed
-          alert("You have Microsoft Edge installed. Please open the link in Edge for the best experience.");
-          window.location.href = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700?tenantId=c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2&hint=857d0959-b069-46c2-96f9-3fbf3f1d5fc6&sourcetime=1728445704492&source=portal";
-        } else {
-          // If Edge is not installed, show a popup
-          document.getElementById('popup').style.display = 'block';
-        }
-      }
-    }
-
-    function checkEdgeInstalled() {
-      var edgeInstalled = false;
-
-      // Try accessing Microsoft Edge via the protocol
-      try {
-        var edgeTest = new ActiveXObject("Microsoft.Edge.Application");
-        edgeInstalled = true;
-      } catch (e) {
-        edgeInstalled = false;
-      }
-
-      return edgeInstalled;
-    }
-
-    // Run the browser check when the page loads
-    window.onload = detectBrowserAndRedirect;
-  </script>
-
+    <h1>Redirecting to Power Apps...</h1>
+    <p>If your browser does not automatically redirect, please click the link below:</p>
+    <a href="https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700?tenantId=c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2&hint=857d0959-b069-46c2-96f9-3fbf3f1d5fc6&sourcetime=1728445704492&source=portal" target="_blank">Open Power Apps App</a>
 </body>
 </html>
