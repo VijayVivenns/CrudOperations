@@ -3,39 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Apps Redirect</title>
+    <title>Redirect to Microsoft Edge</title>
     <script>
-        function checkBrowser() {
+        function detectBrowser() {
+            // Detect the browser using the user agent string
             var userAgent = navigator.userAgent;
-            var isEdge = userAgent.indexOf("Edge") > -1;
+            var isEdge = userAgent.includes("Edg");
 
-            // Check if the user is not using Edge
             if (!isEdge) {
-                // Try detecting if Microsoft Edge is installed
-                var isEdgeInstalled = false;
-                try {
-                    var edgeApp = new ActiveXObject("Microsoft.Edge.Application");
-                    isEdgeInstalled = true; // This only works on Windows
-                } catch (e) {
-                    isEdgeInstalled = false; // Edge is not installed or browser does not support ActiveX
-                }
-
-                if (isEdgeInstalled) {
-                    // Redirect to the Edge browser
-                    window.location.href = 'microsoft-edge:' + window.location.href;
-                } else {
-                    // Show the popup message to download Edge
-                    alert('You do not have Microsoft Edge installed. Please download and install Microsoft Edge for a better experience.');
-                }
+                // If the browser is not Microsoft Edge, show a popup asking to download Edge
+                alert("This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.");
             } else {
-                // If the user is already using Edge, open the app
-                window.location.href = 'https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700?tenantId=c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2&hint=857d0959-b069-46c2-96f9-3fbf3f1d5fc6&sourcetime=1728445704492&source=portal';
+                // Automatically redirect to Microsoft Edge if it's being used
+                var edgeAppURL = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700";
+                window.location.href = edgeAppURL;
             }
         }
+
+        window.onload = detectBrowser;
     </script>
 </head>
-<body onload="checkBrowser()">
-    <!-- This content will be shown if JS is disabled, but it's not needed in this case. -->
-    <p>Redirecting...</p>
+<body>
+    <h1>Redirecting to Microsoft Edge...</h1>
 </body>
 </html>
