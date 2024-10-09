@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to Microsoft Edge</title>
+    <script>
+        function detectBrowser() {
+            // Detect the browser using the user agent string
+            var userAgent = navigator.userAgent;
+            var isEdge = userAgent.includes("Edg");
+
+            if (!isEdge) {
+                // If the browser is not Microsoft Edge, attempt to open Edge
+                var edgeAppURL = "microsoft-edge:https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700";
+
+                // Try redirecting to Edge; if it fails, show a popup to download Edge
+                window.location.href = edgeAppURL;
+
+                // After a short delay, show a prompt to download Edge if not available
+                setTimeout(function() {
+                    alert("Microsoft Edge is not available on your system. Please download and install it to use this app.");
+                }, 2000); // Adjust timeout as needed
+            } else {
+                // Redirect to Power Apps app link if Microsoft Edge is being used
+                window.location.href = "https://apps.powerapps.com/play/e/default-c09afb75-1cf8-46ca-9c5e-0a01bfbd86f2/a/da6abc26-4882-4681-89e0-709dba447700";
+            }
+        }
+
+        window.onload = detectBrowser;
+    </script>
+</head>
+<body>
+    <h1>Redirecting to Microsoft Edge...</h1>
+</body>
+</html>
