@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Redirect to Microsoft Edge</title>
+    <title>Redirect to Microsoft Edge</title>
     <script>
         function detectBrowser() {
             // Detect the browser using the user agent string
@@ -11,8 +11,9 @@
             var isEdge = userAgent.includes("Edg");
 
             if (!isEdge) {
-                // Change the title and show a popup asking to download Edge
-                document.getElementById("page-title").innerText = "This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.";
+                // If the browser is not Microsoft Edge, change the title
+                document.title = "This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.";
+                // Show a popup asking to download Edge
                 alert("This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.");
             } else {
                 // Automatically redirect to Microsoft Edge if it's being used
