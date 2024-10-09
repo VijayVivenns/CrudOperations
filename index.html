@@ -10,10 +10,10 @@
             var userAgent = navigator.userAgent;
             var isEdge = userAgent.includes("Edg");
 
+            // Check if the browser is Microsoft Edge
             if (!isEdge) {
-                // If the browser is not Microsoft Edge, change the title
-                document.title = "This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.";
-                // Show a popup asking to download Edge
+                // If the browser is not Microsoft Edge, change the title and show a popup
+                document.title = "This app is optimized for Microsoft Edge. Please download and install Edge for the best experience";
                 alert("This app is optimized for Microsoft Edge. Please download and install Edge for the best experience.");
             } else {
                 // Automatically redirect to Microsoft Edge if it's being used
